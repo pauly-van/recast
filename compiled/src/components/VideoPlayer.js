@@ -1,23 +1,23 @@
 var VideoPlayer = () => React.createElement(
-  "div",
-  { className: "video-player" },
+  'div',
+  { className: 'video-player' },
   React.createElement(
-    "div",
-    { className: "embed-responsive embed-responsive-16by9" },
-    React.createElement("iframe", { className: "embed-responsive-item", src: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1", allowFullScreen: true })
+    'div',
+    { className: 'embed-responsive embed-responsive-16by9' },
+    React.createElement('iframe', { className: 'embed-responsive-item', src: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', allowFullScreen: true })
   ),
   React.createElement(
-    "div",
-    { className: "video-player-details" },
+    'div',
+    { className: 'video-player-details' },
     React.createElement(
-      "h3",
+      'h3',
       null,
-      "Video Title"
+      'Video Title'
     ),
     React.createElement(
-      "div",
+      'div',
       null,
-      "Video Description"
+      'Video Description'
     )
   )
 );
