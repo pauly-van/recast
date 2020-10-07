@@ -1,23 +1,23 @@
 var VideoListEntry = () => React.createElement(
-  'div',
-  { className: 'video-list-entry media' },
+  "div",
+  { className: "video-list-entry media" },
   React.createElement(
-    'div',
-    { className: 'media-left media-middle' },
-    React.createElement('img', { className: 'media-object', src: 'https://i.ytimg.com/vi/1w8Z0UOXVaY/default.jpg', alt: '' })
+    "div",
+    { className: "media-left media-middle" },
+    React.createElement("img", { className: "media-object", src: "https://i.ytimg.com/vi/1w8Z0UOXVaY/default.jpg", alt: "" })
   ),
   React.createElement(
-    'div',
-    { className: 'media-body' },
+    "div",
+    { className: "media-body" },
     React.createElement(
-      'div',
-      { className: 'video-list-entry-title' },
-      'Video Title'
+      "div",
+      { className: "video-list-entry-title" },
+      "Video Title"
     ),
     React.createElement(
-      'div',
-      { className: 'video-list-entry-detail' },
-      'Video Description'
+      "div",
+      { className: "video-list-entry-detail" },
+      "Video Description"
     )
   )
 );

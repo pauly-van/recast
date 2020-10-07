@@ -1,74 +1,74 @@
 var VideoList = () => React.createElement(
-  'div',
-  { className: 'video-list' },
+  "div",
+  { className: "video-list" },
   React.createElement(
-    'div',
+    "div",
     null,
     React.createElement(
-      'h5',
+      "h5",
       null,
       React.createElement(
-        'em',
+        "em",
         null,
-        'videoListEntry'
+        "videoListEntry"
       ),
-      ' view goes here'
+      " view goes here"
     )
   ),
   React.createElement(
-    'div',
+    "div",
     null,
     React.createElement(
-      'h5',
+      "h5",
       null,
       React.createElement(
-        'em',
+        "em",
         null,
-        'videoListEntry'
+        "videoListEntry"
       ),
-      ' view goes here'
+      " view goes here"
     )
   ),
   React.createElement(
-    'div',
+    "div",
     null,
     React.createElement(
-      'h5',
+      "h5",
       null,
       React.createElement(
-        'em',
+        "em",
         null,
-        'videoListEntry'
+        "videoListEntry"
       ),
-      ' view goes here'
+      " view goes here"
     )
   ),
   React.createElement(
-    'div',
+    "div",
     null,
     React.createElement(
-      'h5',
+      "h5",
       null,
       React.createElement(
-        'em',
+        "em",
         null,
-        'videoListEntry'
+        "videoListEntry"
       ),
-      ' view goes here'
+      " view goes here"
     )
   ),
   React.createElement(
-    'div',
+    "div",
     null,
     React.createElement(
-      'h5',
+      "h5",
       null,
       React.createElement(
-        'em',
+        "em",
         null,
-        'videoListEntry'
+        "videoListEntry"
       ),
-      ' view goes here'
+      " view goes here"
     )
   )
 );
