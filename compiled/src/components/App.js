@@ -1,64 +1,64 @@
 var App = () => React.createElement(
-  "div",
+  'div',
   null,
   React.createElement(
-    "nav",
-    { className: "navbar" },
+    'nav',
+    { className: 'navbar' },
     React.createElement(
-      "div",
-      { className: "col-md-6 offset-md-3" },
+      'div',
+      { className: 'col-md-6 offset-md-3' },
       React.createElement(
-        "div",
+        'div',
         null,
         React.createElement(
-          "h5",
+          'h5',
           null,
           React.createElement(
-            "em",
+            'em',
             null,
-            "search"
+            'search'
           ),
-          " view goes here"
+          ' view goes here'
         )
       )
     )
   ),
   React.createElement(
-    "div",
-    { className: "row" },
+    'div',
+    { className: 'row' },
     React.createElement(
-      "div",
-      { className: "col-md-7" },
+      'div',
+      { className: 'col-md-7' },
       React.createElement(
-        "div",
+        'div',
         null,
         React.createElement(
-          "h5",
+          'h5',
           null,
           React.createElement(
-            "em",
+            'em',
             null,
-            "videoPlayer"
+            'videoPlayer'
           ),
-          " view goes here"
+          ' view goes here'
         )
       )
     ),
     React.createElement(
-      "div",
-      { className: "col-md-5" },
+      'div',
+      { className: 'col-md-5' },
       React.createElement(
-        "div",
+        'div',
         null,
         React.createElement(
-          "h5",
+          'h5',
           null,
           React.createElement(
-            "em",
+            'em',
             null,
-            "videoList"
+            'videoList'
           ),
-          " view goes here"
+          ' view goes here'
         )
       )
     )
