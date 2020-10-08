@@ -1,11 +1,11 @@
 var Search = () => React.createElement(
-  'div',
-  { className: 'search-bar form-inline' },
-  React.createElement('input', { className: 'form-control', type: 'text' }),
+  "div",
+  { className: "search-bar form-inline" },
+  React.createElement("input", { className: "form-control", type: "text" }),
   React.createElement(
-    'button',
-    { className: 'btn hidden-sm-down' },
-    React.createElement('span', { className: 'glyphicon glyphicon-search' })
+    "button",
+    { className: "btn hidden-sm-down" },
+    React.createElement("span", { className: "glyphicon glyphicon-search" })
   )
 );
 
