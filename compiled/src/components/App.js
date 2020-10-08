@@ -2,48 +2,61 @@ import exampleVideoData from '../data/exampleVideoData.js';
 import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
 
-var App = () => React.createElement(
-  'div',
-  null,
-  React.createElement(
-    'nav',
-    { className: 'navbar' },
-    React.createElement(
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      currentVideo: exampleVideoData[0].id.videoId,
+      videoList: exampleVideoData.map(video => video.id.videoId)
+    };
+  }
+
+  render() {
+    return React.createElement(
       'div',
-      { className: 'col-md-6 offset-md-3' },
+      null,
+      React.createElement(
+        'nav',
+        { className: 'navbar' },
+        React.createElement(
+          'div',
+          { className: 'col-md-6 offset-md-3' },
+          React.createElement(
+            'div',
+            null,
+            React.createElement(
+              'h5',
+              null,
+              React.createElement(
+                'em',
+                null,
+                'search'
+              ),
+              ' view goes here'
+            )
+          )
+        )
+      ),
       React.createElement(
         'div',
-        null,
+        { className: 'row' },
         React.createElement(
-          'h5',
-          null,
-          React.createElement(
-            'em',
-            null,
-            'search'
-          ),
-          ' view goes here'
+          'div',
+          { className: 'col-md-7' },
+          React.createElement(VideoPlayer, { state: this.state, video: exampleVideoData[0] })
+        ),
+        React.createElement(
+          'div',
+          { className: 'col-md-5' },
+          React.createElement(VideoList, { state: this.state, videos: exampleVideoData })
         )
       )
-    )
-  ),
-  React.createElement(
-    'div',
-    { className: 'row' },
-    React.createElement(
-      'div',
-      { className: 'col-md-7' },
-      React.createElement(VideoPlayer, { video: exampleVideoData[0] })
-    ),
-    React.createElement(
-      'div',
-      { className: 'col-md-5' },
-      React.createElement(VideoList, { videos: exampleVideoData })
-    )
-  )
-);
+    );
+  }
+}
 
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
 export default App;
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9jb21wb25lbnRzL0FwcC5qc3giXSwibmFtZXMiOlsiZXhhbXBsZVZpZGVvRGF0YSIsIlZpZGVvTGlzdCIsIlZpZGVvUGxheWVyIiwiQXBwIl0sIm1hcHBpbmdzIjoiQUFBQSxPQUFPQSxnQkFBUCxNQUE2Qiw2QkFBN0I7QUFDQSxPQUFPQyxTQUFQLE1BQXNCLGdCQUF0QjtBQUNBLE9BQU9DLFdBQVAsTUFBd0Isa0JBQXhCOztBQUVBLElBQUlDLE1BQU0sTUFDUjtBQUFBO0FBQUE7QUFDRTtBQUFBO0FBQUEsTUFBSyxXQUFVLFFBQWY7QUFDRTtBQUFBO0FBQUEsUUFBSyxXQUFVLHNCQUFmO0FBQ0U7QUFBQTtBQUFBO0FBQUs7QUFBQTtBQUFBO0FBQUk7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQUFKO0FBQUE7QUFBQTtBQUFMO0FBREY7QUFERixHQURGO0FBTUU7QUFBQTtBQUFBLE1BQUssV0FBVSxLQUFmO0FBQ0U7QUFBQTtBQUFBLFFBQUssV0FBVSxVQUFmO0FBRUUsMEJBQUMsV0FBRCxJQUFhLE9BQU9ILGlCQUFpQixDQUFqQixDQUFwQjtBQUZGLEtBREY7QUFLRTtBQUFBO0FBQUEsUUFBSyxXQUFVLFVBQWY7QUFFRSwwQkFBQyxTQUFELElBQVcsUUFBUUEsZ0JBQW5CO0FBRkY7QUFMRjtBQU5GLENBREY7O0FBb0JBO0FBQ0E7QUFDQSxlQUFlRyxHQUFmIiwiZmlsZSI6IkFwcC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBleGFtcGxlVmlkZW9EYXRhIGZyb20gJy4uL2RhdGEvZXhhbXBsZVZpZGVvRGF0YS5qcyc7XG5pbXBvcnQgVmlkZW9MaXN0IGZyb20gJy4vVmlkZW9MaXN0LmpzJztcbmltcG9ydCBWaWRlb1BsYXllciBmcm9tICcuL1ZpZGVvUGxheWVyLmpzJztcblxudmFyIEFwcCA9ICgpID0+IChcbiAgPGRpdj5cbiAgICA8bmF2IGNsYXNzTmFtZT1cIm5hdmJhclwiPlxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJjb2wtbWQtNiBvZmZzZXQtbWQtM1wiPlxuICAgICAgICA8ZGl2PjxoNT48ZW0+c2VhcmNoPC9lbT4gdmlldyBnb2VzIGhlcmU8L2g1PjwvZGl2PlxuICAgICAgPC9kaXY+XG4gICAgPC9uYXY+XG4gICAgPGRpdiBjbGFzc05hbWU9XCJyb3dcIj5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY29sLW1kLTdcIj5cbiAgICAgICAgey8qIDxkaXY+PGg1PjxlbT52aWRlb1BsYXllcjwvZW0+IHZpZXcgZ29lcyBoZXJlPC9oNT48L2Rpdj4gKi99XG4gICAgICAgIDxWaWRlb1BsYXllciB2aWRlbz17ZXhhbXBsZVZpZGVvRGF0YVswXX0vPlxuICAgICAgPC9kaXY+XG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbC1tZC01XCI+XG4gICAgICAgIHsvKiA8ZGl2PjxoNT48ZW0+dmlkZW9MaXN0PC9lbT4gdmlldyBnb2VzIGhlcmU8L2g1PjwvZGl2PiAqL31cbiAgICAgICAgPFZpZGVvTGlzdCB2aWRlb3M9e2V4YW1wbGVWaWRlb0RhdGF9Lz5cbiAgICAgIDwvZGl2PlxuICAgIDwvZGl2PlxuICA8L2Rpdj5cbik7XG5cbi8vIEluIHRoZSBFUzYgc3BlYywgZmlsZXMgYXJlIFwibW9kdWxlc1wiIGFuZCBkbyBub3Qgc2hhcmUgYSB0b3AtbGV2ZWwgc2NvcGVcbi8vIGB2YXJgIGRlY2xhcmF0aW9ucyB3aWxsIG9ubHkgZXhpc3QgZ2xvYmFsbHkgd2hlcmUgZXhwbGljaXRseSBkZWZpbmVkXG5leHBvcnQgZGVmYXVsdCBBcHA7XG5cbiJdfQ==
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9jb21wb25lbnRzL0FwcC5qc3giXSwibmFtZXMiOlsiZXhhbXBsZVZpZGVvRGF0YSIsIlZpZGVvTGlzdCIsIlZpZGVvUGxheWVyIiwiQXBwIiwiUmVhY3QiLCJDb21wb25lbnQiLCJjb25zdHJ1Y3RvciIsInByb3BzIiwic3RhdGUiLCJjdXJyZW50VmlkZW8iLCJpZCIsInZpZGVvSWQiLCJ2aWRlb0xpc3QiLCJtYXAiLCJ2aWRlbyIsInJlbmRlciJdLCJtYXBwaW5ncyI6IkFBQUEsT0FBT0EsZ0JBQVAsTUFBNkIsNkJBQTdCO0FBQ0EsT0FBT0MsU0FBUCxNQUFzQixnQkFBdEI7QUFDQSxPQUFPQyxXQUFQLE1BQXdCLGtCQUF4Qjs7QUFFQSxNQUFNQyxHQUFOLFNBQWtCQyxNQUFNQyxTQUF4QixDQUFrQztBQUNoQ0MsY0FBWUMsS0FBWixFQUFtQjtBQUNqQixVQUFNQSxLQUFOOztBQUVBLFNBQUtDLEtBQUwsR0FBYTtBQUNYQyxvQkFBY1QsaUJBQWlCLENBQWpCLEVBQW9CVSxFQUFwQixDQUF1QkMsT0FEMUI7QUFFWEMsaUJBQVdaLGlCQUFpQmEsR0FBakIsQ0FBcUJDLFNBQVNBLE1BQU1KLEVBQU4sQ0FBU0MsT0FBdkM7QUFGQSxLQUFiO0FBSUQ7O0FBRURJLFdBQVM7QUFDUCxXQUNFO0FBQUE7QUFBQTtBQUNBO0FBQUE7QUFBQSxVQUFLLFdBQVUsUUFBZjtBQUNFO0FBQUE7QUFBQSxZQUFLLFdBQVUsc0JBQWY7QUFDRTtBQUFBO0FBQUE7QUFBSztBQUFBO0FBQUE7QUFBSTtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBQUo7QUFBQTtBQUFBO0FBQUw7QUFERjtBQURGLE9BREE7QUFNQTtBQUFBO0FBQUEsVUFBSyxXQUFVLEtBQWY7QUFDRTtBQUFBO0FBQUEsWUFBSyxXQUFVLFVBQWY7QUFFRSw4QkFBQyxXQUFELElBQWEsT0FBTyxLQUFLUCxLQUF6QixFQUFnQyxPQUFPUixpQkFBaUIsQ0FBakIsQ0FBdkM7QUFGRixTQURGO0FBS0U7QUFBQTtBQUFBLFlBQUssV0FBVSxVQUFmO0FBRUUsOEJBQUMsU0FBRCxJQUFXLE9BQU8sS0FBS1EsS0FBdkIsRUFBOEIsUUFBUVIsZ0JBQXRDO0FBRkY7QUFMRjtBQU5BLEtBREY7QUFtQkQ7QUE5QitCOztBQWlDbEM7QUFDQTtBQUNBLGVBQWVHLEdBQWYiLCJmaWxlIjoiQXBwLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IGV4YW1wbGVWaWRlb0RhdGEgZnJvbSAnLi4vZGF0YS9leGFtcGxlVmlkZW9EYXRhLmpzJztcbmltcG9ydCBWaWRlb0xpc3QgZnJvbSAnLi9WaWRlb0xpc3QuanMnO1xuaW1wb3J0IFZpZGVvUGxheWVyIGZyb20gJy4vVmlkZW9QbGF5ZXIuanMnO1xuXG5jbGFzcyBBcHAgZXh0ZW5kcyBSZWFjdC5Db21wb25lbnQge1xuICBjb25zdHJ1Y3Rvcihwcm9wcykge1xuICAgIHN1cGVyKHByb3BzKTtcblxuICAgIHRoaXMuc3RhdGUgPSB7XG4gICAgICBjdXJyZW50VmlkZW86IGV4YW1wbGVWaWRlb0RhdGFbMF0uaWQudmlkZW9JZCxcbiAgICAgIHZpZGVvTGlzdDogZXhhbXBsZVZpZGVvRGF0YS5tYXAodmlkZW8gPT4gdmlkZW8uaWQudmlkZW9JZClcbiAgICB9O1xuICB9XG5cbiAgcmVuZGVyKCkge1xuICAgIHJldHVybiAoXG4gICAgICA8ZGl2PlxuICAgICAgPG5hdiBjbGFzc05hbWU9XCJuYXZiYXJcIj5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJjb2wtbWQtNiBvZmZzZXQtbWQtM1wiPlxuICAgICAgICAgIDxkaXY+PGg1PjxlbT5zZWFyY2g8L2VtPiB2aWV3IGdvZXMgaGVyZTwvaDU+PC9kaXY+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC9uYXY+XG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cInJvd1wiPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbC1tZC03XCI+XG4gICAgICAgICAgey8qIDxkaXY+PGg1PjxlbT52aWRlb1BsYXllcjwvZW0+IHZpZXcgZ29lcyBoZXJlPC9oNT48L2Rpdj4gKi99XG4gICAgICAgICAgPFZpZGVvUGxheWVyIHN0YXRlPXt0aGlzLnN0YXRlfSB2aWRlbz17ZXhhbXBsZVZpZGVvRGF0YVswXX0vPlxuICAgICAgICA8L2Rpdj5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJjb2wtbWQtNVwiPlxuICAgICAgICAgIHsvKiA8ZGl2PjxoNT48ZW0+dmlkZW9MaXN0PC9lbT4gdmlldyBnb2VzIGhlcmU8L2g1PjwvZGl2PiAqL31cbiAgICAgICAgICA8VmlkZW9MaXN0IHN0YXRlPXt0aGlzLnN0YXRlfSB2aWRlb3M9e2V4YW1wbGVWaWRlb0RhdGF9Lz5cbiAgICAgICAgPC9kaXY+XG4gICAgICA8L2Rpdj5cbiAgICA8L2Rpdj5cbiAgICApO1xuICB9IFxufVxuXG4vLyBJbiB0aGUgRVM2IHNwZWMsIGZpbGVzIGFyZSBcIm1vZHVsZXNcIiBhbmQgZG8gbm90IHNoYXJlIGEgdG9wLWxldmVsIHNjb3BlXG4vLyBgdmFyYCBkZWNsYXJhdGlvbnMgd2lsbCBvbmx5IGV4aXN0IGdsb2JhbGx5IHdoZXJlIGV4cGxpY2l0bHkgZGVmaW5lZFxuZXhwb3J0IGRlZmF1bHQgQXBwO1xuXG4iXX0=
