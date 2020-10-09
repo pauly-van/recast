@@ -7,21 +7,28 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      currentVideo: exampleVideoData[0].id.videoId,
-      videoList: exampleVideoData.map(video => video.id.videoId)
+      currentVideo: exampleVideoData[0],
+      videoList: exampleVideoData.map(video => video.id.videoId),
     };
+  }
+
+  setCurrentVideo(event) {
+    this.setState({
+      currentVideo: exampleVideoData[1]
+    });
   }
 
   render() {
     return (
       <div>
-        <nav className="navbar">
+        <nav className="navbar" onClick={this.setCurrentVideo.bind(this)}>
+          this is it
           <div className="col-md-6 offset-md-3">
             <div><h5><em>search</em> view goes here</h5></div>
           </div>
         </nav>
         <div className="row">
-          <div className="col-md-7">
+          <div id="vidplayer" className="col-md-7">
             {/* <div><h5><em>videoPlayer</em> view goes here</h5></div> */}
             <VideoPlayer state={this.state} video={exampleVideoData[0]}/>
           </div>
