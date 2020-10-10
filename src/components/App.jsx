@@ -35,7 +35,7 @@ class App extends React.Component {
           </div>
           <div className="col-md-5">
             {/* <div><h5><em>videoList</em> view goes here</h5></div> */}
-            <VideoList state={this.state} videos={exampleVideoData} setCurrentVideo={this.setCurrentVideo}/>
+            <VideoList state={this.state} videos={exampleVideoData} setCurrentVideo={this.setCurrentVideo.bind(this)}/>
           </div>
         </div>
       </div>
