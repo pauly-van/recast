@@ -13,6 +13,8 @@ class App extends React.Component {
   }
 
   setCurrentVideo(event) {
+    console.log(event.target.id);
+    console.log(this);
     this.setState({
       currentVideo: exampleVideoData[1]
     });
@@ -21,8 +23,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <nav className="navbar" onClick={this.setCurrentVideo.bind(this)}>
-          this is it
+        <nav className="navbar">
           <div className="col-md-6 offset-md-3">
             <div><h5><em>search</em> view goes here</h5></div>
           </div>
@@ -34,7 +35,7 @@ class App extends React.Component {
           </div>
           <div className="col-md-5">
             {/* <div><h5><em>videoList</em> view goes here</h5></div> */}
-            <VideoList state={this.state} videos={exampleVideoData}/>
+            <VideoList state={this.state} videos={exampleVideoData} setCurrentVideo={this.setCurrentVideo}/>
           </div>
         </div>
       </div>
