@@ -1,29 +1,88 @@
 import exampleVideoData from '../data/exampleVideoData.js';
+import searchYouTube from '../lib/searchYouTube.js';
 import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
+import YOUTUBE_API_KEY from '../config/youtube.js';
+import Search from './Search.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      currentVideo: exampleVideoData[0],
-      videoList: exampleVideoData.map(video => video.id.videoId),
+      currentVideo: {
+        kind: '',
+        etag: '',
+        id: {
+          kind: '',
+          videoId: ''
+        },
+        snippet: {
+          publishedAt: '',
+          channelId: '',
+          title: '',
+          description: '',
+          thumbnails: {
+            default: {
+              url: '',
+              width: 320,
+              height: 180
+            },
+            medium: {
+              url: '',
+              width: 320,
+              height: 180
+            },
+            high: {
+              url: '',
+              width: 480,
+              height: 360
+            }
+          },
+          channelTitle: '',
+          liveBroadcastContent: ''
+        }
+      },
+      videoList: [],
     };
+  }
+
+  componentDidMount() {
+
+    var cb = function(videoArray) {
+      this.setState({
+        currentVideo: videoArray[0],
+        videoList: videoArray
+      });
+
+    };
+    searchYouTube({query: 'cats', max: 5, key: YOUTUBE_API_KEY}, cb.bind(this));
   }
 
   setCurrentVideo(event) {
     // console.log(event.target.id);
     // console.log(this);
-    for (let i = 0; i < exampleVideoData.length; i++) {
-      if (exampleVideoData[i].id.videoId === event.target.id) {
+    for (let i = 0; i < this.state.videoList.length; i++) {
+      if (this.state.videoList[i].id.videoId === event.target.id) {
         var indexOfClick = i;
         break; 
       }
     }
     this.setState({
-      currentVideo: exampleVideoData[indexOfClick]
+      currentVideo: this.state.videoList[indexOfClick]
     });
+  }
+
+  searchNewVideo(value) {
+    console.log('In App: ', value);
+    var cb = function(videoArray) {
+      this.setState({
+        currentVideo: videoArray[0],
+        videoList: videoArray
+      });
+
+    };
+    searchYouTube({query: value, max: 5, key: YOUTUBE_API_KEY}, cb.bind(this));
   }
 
   render() {
@@ -31,17 +90,17 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><h5><em>search</em> view goes here</h5></div>
+            <Search state={this.state} searchNewVideo={this.searchNewVideo.bind(this)} />
           </div>
         </nav>
         <div className="row">
           <div id="vidplayer" className="col-md-7">
             {/* <div><h5><em>videoPlayer</em> view goes here</h5></div> */}
-            <VideoPlayer state={this.state} video={exampleVideoData[0]}/>
+            <VideoPlayer state={this.state} video={this.state.currentVideo}/>
           </div>
           <div className="col-md-5">
             {/* <div><h5><em>videoList</em> view goes here</h5></div> */}
-            <VideoList state={this.state} videos={exampleVideoData} setCurrentVideo={this.setCurrentVideo.bind(this)}/>
+            <VideoList state={this.state} videos={this.state.videoList} setCurrentVideo={this.setCurrentVideo.bind(this)}/>
           </div>
         </div>
       </div>
