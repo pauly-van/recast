@@ -13,10 +13,16 @@ class App extends React.Component {
   }
 
   setCurrentVideo(event) {
-    console.log(event.target.id);
-    console.log(this);
+    // console.log(event.target.id);
+    // console.log(this);
+    for (let i = 0; i < exampleVideoData.length; i++) {
+      if (exampleVideoData[i].id.videoId === event.target.id) {
+        var indexOfClick = i;
+        break; 
+      }
+    }
     this.setState({
-      currentVideo: exampleVideoData[1]
+      currentVideo: exampleVideoData[indexOfClick]
     });
   }
 

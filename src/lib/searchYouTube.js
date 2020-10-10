@@ -15,7 +15,6 @@ var searchYouTube = (options, callback) => {
       console.error('Failed youtube call --', data);
     }
   });
-  
 };
 
 export default searchYouTube;
