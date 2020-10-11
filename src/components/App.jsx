@@ -1,4 +1,3 @@
-import exampleVideoData from '../data/exampleVideoData.js';
 import searchYouTube from '../lib/searchYouTube.js';
 import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
@@ -48,20 +47,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-
-    var cb = function(videoArray) {
-      this.setState({
-        currentVideo: videoArray[0],
-        videoList: videoArray
-      });
-
-    };
-    searchYouTube({query: 'cats', max: 5, key: YOUTUBE_API_KEY}, cb.bind(this));
+    this.searchNewVideo();
   }
 
   setCurrentVideo(event) {
-    // console.log(event.target.id);
-    // console.log(this);
     for (let i = 0; i < this.state.videoList.length; i++) {
       if (this.state.videoList[i].id.videoId === event.target.id) {
         var indexOfClick = i;
@@ -73,8 +62,7 @@ class App extends React.Component {
     });
   }
 
-  searchNewVideo(value) {
-    console.log('In App: ', value);
+  searchNewVideo(value = 'cats') {
     var cb = function(videoArray) {
       this.setState({
         currentVideo: videoArray[0],
@@ -96,7 +84,7 @@ class App extends React.Component {
         <div className="row">
           <div id="vidplayer" className="col-md-7">
             {/* <div><h5><em>videoPlayer</em> view goes here</h5></div> */}
-            <VideoPlayer state={this.state} video={this.state.currentVideo}/>
+            <VideoPlayer video={this.state.currentVideo}/>
           </div>
           <div className="col-md-5">
             {/* <div><h5><em>videoList</em> view goes here</h5></div> */}
